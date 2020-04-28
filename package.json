@@ -1,5 +1,5 @@
 {
-  "name": "myPortfolio",
+  "name": "my-portfolio",
   "version": "1.0.0",
   "description": "My astounding Nuxt.js project",
   "author": "roll1226",
@@ -17,7 +17,9 @@
     "copy:static": "cp app/static/* dist/client",
     "copy:client": "cp .nuxt/dist/client/* dist/client/",
     "predeploy": "yarn clean:dist && yarn copy:functions && yarn copy:nuxt && yarn copy:static && yarn copy:client",
-    "deploy": "firebase deploy"
+    "deploy": "firebase deploy",
+
+    "git:push": "github.command"
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^0.4.0",
