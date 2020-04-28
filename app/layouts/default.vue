@@ -1,8 +1,20 @@
 <template>
   <div>
+    <PortfolioHead />
     <nuxt />
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import PortfolioHead from '~/components/PortfolioHead.vue'
+
+export default Vue.extend({
+  components: {
+    PortfolioHead
+  }
+})
+</script>
 
 <style>
 html {
@@ -15,6 +27,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  background: #fdff99;
 }
 
 *,
