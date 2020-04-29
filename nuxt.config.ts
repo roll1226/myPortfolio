@@ -1,4 +1,7 @@
 export default {
+  server: {
+    host: '0.0.0.0'
+  },
   srcDir: 'app/',
   mode: 'universal',
   /*
@@ -24,7 +27,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [{ src: '~/assets/scss/styles.scss' }],
   /*
    ** Plugins to load before mounting the App
    */

@@ -1,26 +1,98 @@
 <template>
   <div class="Head_Wrap">
-    <div class="Head_Img">
-      <img src="~/assets/myHead.svg" alt="PortfilioHeadImg" />
-    </div>
+    <img
+      src="~/assets/img/myHead.svg"
+      alt="PortfilioHeadImg"
+      class="Head_Img"
+      :class="{ Open_Nav_Img: isNav }"
+    />
+
+    <button class="Nav_Btn" :class="{ Open_Nav: isNav }" @click="navBtn">
+      <img src="~/assets/img/pudding.png" alt="pudding.png" />
+    </button>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+type NuxtData = {
+  isNav: boolean
+}
 
-export default Vue.extend({})
+export default Vue.extend({
+  data(): NuxtData {
+    return {
+      isNav: false
+    }
+  },
+
+  methods: {
+    navBtn() {
+      this.isNav = !this.isNav
+    }
+  }
+})
 </script>
 
 <style lang="scss">
+@keyframes openNav {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1) rotate(-180deg);
+  }
+}
+
+@keyframes closeNav {
+  0% {
+    transform: scale(1) rotate(-180deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
 .Head_Wrap {
   position: relative;
   .Head_Img {
+    z-index: 40;
     position: absolute;
-    top: -45vw;
+    top: -110vh;
     left: 0px;
+    width: 100vw;
+    transition: all 300ms cubic-bezier(0.28, 0.52, 0.03, 0.9) 0s;
+    &.Open_Nav_Img {
+      top: 0vw;
+    }
+  }
+
+  .Nav_Btn {
+    position: absolute;
+    z-index: 41;
+    top: 2vh;
+    right: 2vw;
+    background: transparent;
+    border-color: transparent;
+    cursor: pointer;
+    transform-origin: center;
+    transition: all 200ms;
+    transform: scale(1);
+    animation: closeNav 300ms cubic-bezier(0.21, 0.74, 0.36, 0.9) 0s forwards;
+
+    &.Open_Nav {
+      animation: openNav 300ms cubic-bezier(0.21, 0.74, 0.36, 0.9) 0s forwards;
+    }
+
     img {
-      width: 100vw;
+      transition: all 200ms;
+      transform: scale(1);
+      width: 25vw;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
     }
   }
 }
@@ -28,7 +100,18 @@ export default Vue.extend({})
 @media screen and(min-width: 770px) {
   .Head_Wrap {
     .Head_Img {
-      top: -56vw;
+      top: -448vh;
+      &.Open_Nav_Img {
+        top: -180vw;
+      }
+    }
+
+    .Nav_Btn {
+      top: 0.6vw;
+      right: 2vw;
+      img {
+        width: 9vw;
+      }
     }
   }
 }
