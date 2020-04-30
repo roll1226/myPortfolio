@@ -25,7 +25,7 @@
 }
 
 .About_Wrap {
-  max-width: 52vw;
+  max-width: 80vw;
   margin: 5vh auto 0;
   font-size: 1.5rem;
   letter-spacing: 0.2rem;
@@ -50,6 +50,12 @@
     .Brackets {
       @include fontFamily();
     }
+  }
+}
+
+@media screen and(min-width: 770px) {
+  .About_Wrap {
+    max-width: 52vw;
   }
 }
 </style>

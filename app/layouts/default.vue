@@ -16,7 +16,7 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style lang="scss">
 html {
   font-family: 'MaruZawa', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -46,32 +46,42 @@ body {
   outline: none;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.Title_Wrap {
+  margin-top: 20vh;
+  text-align: center;
+  font-size: 4rem;
+  letter-spacing: 2rem;
+  padding-left: 2rem;
+  color: #985633;
+  text-shadow: 3px 3px 4px #b3b3b3;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.Sub_Title {
+  margin-top: 10vh;
+  text-align: center;
+  font-size: 4rem;
+  letter-spacing: 2rem;
+  padding-left: 2rem;
+  color: #985633;
+  text-shadow: 3px 3px 4px #b3b3b3;
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+.No_Scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+@media screen and(min-width: 770px) {
+  .Title_Wrap {
+    margin-top: 25vh;
+  }
+
+  .Sub_Title {
+    margin-top: 14vh;
+  }
 }
 </style>

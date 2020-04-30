@@ -1,12 +1,14 @@
 <template>
-  <div class="Profile_Wrap">
-    <h2 class="Profile_Title">
+  <div class="Profile_Wrap No_Scroll">
+    <h2 class="Title_Wrap">
       わたし
     </h2>
 
     <About />
 
     <Skill />
+
+    <Contact />
   </div>
 </template>
 
@@ -14,11 +16,13 @@
 import Vue from 'vue'
 import About from '~/components/Profile/About.vue'
 import Skill from '~/components/Profile/Skill.vue'
+import Contact from '~/components/Profile/Contact.vue'
 
 export default Vue.extend({
   components: {
     About,
-    Skill
+    Skill,
+    Contact
   },
 
   async asyncData({ store }) {
@@ -31,15 +35,6 @@ export default Vue.extend({
 .Profile_Wrap {
   height: 100vh;
   overflow-y: auto;
-
-  .Profile_Title {
-    margin-top: 25vh;
-    text-align: center;
-    font-size: 4rem;
-    letter-spacing: 2rem;
-    padding-left: 2rem;
-    color: #985633;
-    text-shadow: 3px 3px 4px #b3b3b3;
-  }
+  padding-bottom: 10vh;
 }
 </style>
