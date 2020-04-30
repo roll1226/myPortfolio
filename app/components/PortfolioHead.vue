@@ -7,9 +7,15 @@
       :class="{ Open_Nav_Img: isNav }"
     />
 
-    <NavList />
+    <NavPlate :class="{ Close_All_Nav: !isNav }" />
 
-    <button class="Nav_Btn" :class="{ Open_Nav: isNav }" @click="navBtn">
+    <NavList :class="{ Close_All_Nav: !isNav }" />
+
+    <button
+      class="Nav_Btn"
+      :class="{ Open_Nav: isNav, Close_Nav: !isNav }"
+      @click="navBtn"
+    >
       <img src="~/assets/img/pudding.png" alt="pudding.png" />
     </button>
   </div>
@@ -18,6 +24,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import NavList from '~/components/NavList.vue'
+import NavPlate from '~/components/NavPlate.vue'
 
 // type NuxtData = {
 //   isNav: boolean
@@ -25,7 +32,8 @@ import NavList from '~/components/NavList.vue'
 
 export default Vue.extend({
   components: {
-    NavList
+    NavList,
+    NavPlate
   },
 
   computed: {
@@ -51,25 +59,23 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-@keyframes openNav {
-  0% {
-    transform: scale(1) rotate(0deg);
+@keyframes clossAllNav {
+  from {
+    width: 100vw;
   }
-  100% {
-    transform: scale(1) rotate(-180deg);
+
+  to {
+    width: 0%;
   }
 }
 
-@keyframes closeNav {
-  0% {
-    transform: scale(1) rotate(-180deg);
-  }
-  100% {
-    transform: scale(1) rotate(0deg);
-  }
-}
 .Head_Wrap {
   position: relative;
+
+  .Close_All_Nav {
+    animation: clossAllNav 1ms linear 400ms forwards;
+  }
+
   .Head_Img {
     z-index: 40;
     position: absolute;
@@ -93,10 +99,14 @@ export default Vue.extend({
     transform-origin: center;
     transition: all 200ms;
     transform: scale(1);
-    animation: closeNav 300ms cubic-bezier(0.21, 0.74, 0.36, 0.9) 0s forwards;
+    transition: all 300ms cubic-bezier(0.28, 0.52, 0.03, 0.9) 0s;
 
     &.Open_Nav {
-      animation: openNav 300ms cubic-bezier(0.21, 0.74, 0.36, 0.9) 0s forwards;
+      transform: rotate(-180deg);
+    }
+
+    &.Close_Nav {
+      transform: rotate(0deg);
     }
 
     img {
@@ -118,7 +128,7 @@ export default Vue.extend({
     .Head_Img {
       top: -247vw;
       &.Open_Nav_Img {
-        top: -180vw;
+        top: -170vw;
       }
     }
 
