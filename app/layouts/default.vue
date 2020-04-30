@@ -70,6 +70,10 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 
+  height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 19vh;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -85,6 +89,10 @@ body {
     margin-top: 10vh;
     margin-top: 14vh;
     font-size: 4rem;
+  }
+
+  .No_Scroll {
+    padding-bottom: 9.5vh;
   }
 }
 </style>

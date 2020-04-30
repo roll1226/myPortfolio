@@ -3,8 +3,23 @@
     <!-- わたしは 作品 思い出 -->
     <ul class="Nav_List_Wrap" :class="{ disabled: !isNav }">
       <li
+        v-if="nowRoute !== 'index'"
         class="Nav Nav_Space"
         :class="{ Open_Nav_1: isNav, Close_Nav: !isNav }"
+      >
+        <nuxt-link to="/">
+          トップ
+        </nuxt-link>
+      </li>
+
+      <li
+        v-if="nowRoute !== 'profile'"
+        class="Nav Nav_Space"
+        :class="{
+          Open_Nav_1: isNav && nowRoute === 'index',
+          Open_Nav_2: isNav && nowRoute !== 'index',
+          Close_Nav: !isNav
+        }"
       >
         <nuxt-link to="/profile">
           わたし
@@ -12,15 +27,25 @@
       </li>
 
       <li
-        class="Nav Nav_Space"
-        :class="{ Open_Nav_2: isNav, Close_Nav: !isNav }"
+        v-if="nowRoute !== 'works'"
+        class="Nav"
+        :class="{
+          Open_Nav_2: isNav && nowRoute !== 'memories',
+          Open_Nav_3: isNav && nowRoute === 'memories',
+          Nav_Space: nowRoute !== 'memories',
+          Close_Nav: !isNav
+        }"
       >
         <nuxt-link to="/works">
           作品
         </nuxt-link>
       </li>
 
-      <li class="Nav" :class="{ Open_Nav_3: isNav, Close_Nav: !isNav }">
+      <li
+        v-if="nowRoute !== 'memories'"
+        class="Nav"
+        :class="{ Open_Nav_3: isNav, Close_Nav: !isNav }"
+      >
         <nuxt-link to="/memories">
           メモリー
         </nuxt-link>
@@ -31,11 +56,32 @@
 
 <script lang="ts">
 import Vue from 'vue'
+
+type Data = {
+  nowRoute: string | null | undefined
+}
+
 export default Vue.extend({
+  data(): Data {
+    return {
+      nowRoute: ''
+    }
+  },
+
   computed: {
     isNav(): boolean {
       return this.$store.state.nav.isNav
     }
+  },
+
+  watch: {
+    $route(from) {
+      this.nowRoute = from.name
+    }
+  },
+
+  created() {
+    this.nowRoute = this.$route.name
   }
 })
 </script>
@@ -96,7 +142,7 @@ export default Vue.extend({
     }
 
     &.Close_Nav {
-      @include animetionNav(80ms, 0ms, 0);
+      @include animetionNav(0ms, 0ms, 0);
     }
   }
 }

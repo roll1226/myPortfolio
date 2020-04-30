@@ -1,5 +1,5 @@
 <template>
-  <div class="Profile_Wrap No_Scroll">
+  <div class="No_Scroll">
     <h2 class="Title_Wrap">
       わたし
     </h2>
@@ -30,17 +30,3 @@ export default Vue.extend({
   }
 })
 </script>
-
-<style lang="scss">
-.Profile_Wrap {
-  height: 100vh;
-  overflow-y: auto;
-  padding-bottom: 19vh;
-}
-
-@media screen and(min-width: 770px) {
-  .Profile_Wrap {
-    padding-bottom: 9.5vh;
-  }
-}
-</style>

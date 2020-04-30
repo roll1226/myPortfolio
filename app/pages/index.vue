@@ -18,6 +18,16 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  async asyncData({ store }) {
+    await store.commit('nav/SET_IS_NAV', false)
+  }
+})
+</script>
+
 <style lang="scss">
 .Index_Wrap {
   width: 100vw;
