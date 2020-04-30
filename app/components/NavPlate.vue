@@ -30,30 +30,19 @@ export default Vue.extend({
 
   &.Open_Plate {
     .Plate {
-      width: 500px;
-      height: 500px;
-      transform: rotate(30deg);
-      &::before {
-        height: 280px;
-        width: 280px;
-      }
+      transform: scale(1) rotate(30deg);
     }
   }
 
   &.Close_Plate {
     .Plate {
-      width: 0px;
-      height: 0px;
-      transform: rotate(-90deg);
-      &::before {
-        height: 0px;
-        width: 0px;
-      }
+      transform: scale(0) rotate(-90deg);
     }
   }
 
   .Plate {
-    @include animetionPlate();
+    width: 500px;
+    height: 500px;
     border-bottom: solid 7px #ddd;
     background: white;
     border-radius: 50%;
@@ -63,11 +52,13 @@ export default Vue.extend({
     margin: 0 10px 0 0;
     position: relative;
     transform-origin: center;
+    @include animetionPlate();
 
     &::before {
-      @include animetionPlate();
       content: '';
       display: block;
+      height: 280px;
+      width: 280px;
       position: absolute;
       left: 50%;
       top: 50%;

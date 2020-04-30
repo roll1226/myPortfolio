@@ -96,7 +96,7 @@ export default Vue.extend({
     }
 
     &.Close_Nav {
-      @include animetionNav(100ms, 0ms, 0);
+      @include animetionNav(80ms, 0ms, 0);
     }
   }
 }

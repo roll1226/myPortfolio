@@ -18,11 +18,6 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({})
-</script>
-
 <style lang="scss">
 .Index_Wrap {
   width: 100vw;
