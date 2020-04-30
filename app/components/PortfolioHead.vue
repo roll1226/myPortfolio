@@ -7,6 +7,8 @@
       :class="{ Open_Nav_Img: isNav }"
     />
 
+    <NavList />
+
     <button class="Nav_Btn" :class="{ Open_Nav: isNav }" @click="navBtn">
       <img src="~/assets/img/pudding.png" alt="pudding.png" />
     </button>
@@ -15,20 +17,34 @@
 
 <script lang="ts">
 import Vue from 'vue'
-type NuxtData = {
-  isNav: boolean
-}
+import NavList from '~/components/NavList.vue'
+
+// type NuxtData = {
+//   isNav: boolean
+// }
 
 export default Vue.extend({
-  data(): NuxtData {
-    return {
-      isNav: false
+  components: {
+    NavList
+  },
+
+  computed: {
+    isNav(): boolean {
+      return this.$store.state.nav.isNav
     }
   },
 
+  // data(): NuxtData {
+  //   return {
+  //     isNav: false
+  //   }
+  // },
+
   methods: {
     navBtn() {
-      this.isNav = !this.isNav
+      // this.isNav = !this.isNav
+      if (this.isNav === false) this.$store.commit('nav/SET_IS_NAV', true)
+      else this.$store.commit('nav/SET_IS_NAV', false)
     }
   }
 })
@@ -57,7 +73,7 @@ export default Vue.extend({
   .Head_Img {
     z-index: 40;
     position: absolute;
-    top: -110vh;
+    top: -225vw;
     left: 0px;
     width: 100vw;
     transition: all 300ms cubic-bezier(0.28, 0.52, 0.03, 0.9) 0s;
@@ -100,7 +116,7 @@ export default Vue.extend({
 @media screen and(min-width: 770px) {
   .Head_Wrap {
     .Head_Img {
-      top: -448vh;
+      top: -247vw;
       &.Open_Nav_Img {
         top: -180vw;
       }

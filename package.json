@@ -15,7 +15,7 @@
     "copy:nuxt": "cp -R .nuxt dist/server/",
     "copy:static": "cp app/static/* dist/client",
     "copy:client": "cp .nuxt/dist/client/* dist/client/",
-    "predeploy": "yarn clean:dist && yarn copy:functions && yarn copy:nuxt && yarn copy:static && yarn copy:client",
+    "predeploy": "yarn build && yarn clean:dist && yarn copy:functions && yarn copy:nuxt && yarn copy:static && yarn copy:client",
     "deploy": "firebase deploy",
     "git:push": "github.command"
   },
