@@ -35,6 +35,12 @@ export default Vue.extend({
 .Profile_Wrap {
   height: 100vh;
   overflow-y: auto;
-  padding-bottom: 10vh;
+  padding-bottom: 19vh;
+}
+
+@media screen and(min-width: 770px) {
+  .Profile_Wrap {
+    padding-bottom: 9.5vh;
+  }
 }
 </style>

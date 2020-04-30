@@ -13,7 +13,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import SkillGraph from '~/components/Profile/SkillGraph.vue'
-import { firestore } from '@/plugins/firebase'
 
 export interface ISkills {
   name: string
@@ -32,20 +31,12 @@ export default Vue.extend({
 
   data(): Data {
     return {
-      skills: []
+      skills: [
+        { name: 'Vue, Nuxt', color: '#40B27F', value: '80' },
+        { name: 'React, Next', color: '#6CD3FE', value: '30' },
+        { name: 'Typescript', color: '#0177C7', value: '60' }
+      ]
     }
-  },
-
-  async created() {
-    const skill = await firestore.collection('skills').get()
-
-    const skillList: ISkills[] = []
-
-    for (let index = 0; index < skill.size; index++) {
-      skillList.push(skill.docs[index].data() as ISkills)
-    }
-
-    this.skills = skillList
   }
 })
 </script>

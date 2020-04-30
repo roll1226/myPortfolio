@@ -32,7 +32,7 @@ export default Vue.extend({
   position: relative;
   max-width: 80vw;
   margin: 5vh auto 0;
-  border: 1px solid #000;
+  border: 1px solid #985633;
   padding: 2px;
 
   .bar {

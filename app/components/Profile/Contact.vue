@@ -3,11 +3,134 @@
     <h3 class="Sub_Title">
       お問い合わせ
     </h3>
+
+    <div class="Input_Wrap">
+      <input type="text" placeholder="タイトル" />
+    </div>
+
+    <div class="Input_Wrap">
+      <input type="text" placeholder="メールアドレス" />
+    </div>
+
+    <div class="Input_Wrap">
+      <textarea class="Textarea_Wrap" placeholder="内容"></textarea>
+    </div>
+
+    <div class="Send_Btn_Wrap">
+      <button class="Send_Btn">
+        送信
+      </button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
-export default Vue.extend({})
+type Data = {
+  title: string
+  email: string
+  contact: string
+}
+
+export default Vue.extend({
+  data(): Data {
+    return {
+      title: '',
+      email: '',
+      contact: ''
+    }
+  }
+})
 </script>
+
+<style lang="scss">
+@mixin fontFamily() {
+  font-family: 'ヒラギノ丸ゴ Pro W4', 'ヒラギノ丸ゴ Pro',
+    'Hiragino Maru Gothic Pro', 'ヒラギノ角ゴ Pro W3',
+    'Hiragino Kaku Gothic Pro', 'HG丸ｺﾞｼｯｸM-PRO', 'HGMaruGothicMPRO',
+    'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
+
+@mixin commonCss($height: auto, $paddding: 0.8rem, $fontSize: 1.5rem) {
+  font-size: $fontSize;
+  box-sizing: border-box;
+  width: 100%;
+  height: $height;
+  padding: $paddding;
+  transition: 0.3s;
+  letter-spacing: 0.3rem;
+  color: #000;
+  border: 2px solid #1b2538;
+  border-radius: 10px;
+}
+
+@mixin commonFocus() {
+  border: 2px solid #fdff99;
+  outline: none;
+  box-shadow: 0 0 8px 4px rgba(152, 86, 51, 0.5);
+}
+
+.Input_Wrap {
+  max-width: 80vw;
+  margin: 4vh auto 0;
+
+  input[type='text'] {
+    @include fontFamily();
+    @include commonCss(auto, 0.5rem, 1rem);
+
+    &:focus {
+      @include commonFocus();
+    }
+  }
+}
+
+.Textarea_Wrap {
+  @include fontFamily();
+  @include commonCss(7rem, 0.5rem, 1rem);
+
+  &:focus {
+    @include commonFocus();
+  }
+}
+
+.Send_Btn_Wrap {
+  text-align: center;
+  .Send_Btn {
+    font-family: 'MaruZawa', 'Source Sans Pro', -apple-system,
+      BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+      sans-serif;
+
+    margin-top: 2vh;
+    padding: 0.5rem 1.2rem;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #985633;
+    border: solid 2px #985633;
+    border-radius: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      @include commonFocus();
+    }
+  }
+}
+
+@media screen and(min-width: 770px) {
+  .Input_Wrap {
+    max-width: 52vw;
+    margin: 5.5vh auto 0;
+
+    input[type='text'] {
+      @include commonCss();
+    }
+  }
+
+  .Textarea_Wrap {
+    @include commonCss(10rem, 0.8rem, 1.5rem);
+  }
+}
+</style>

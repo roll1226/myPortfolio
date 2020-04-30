@@ -126,7 +126,7 @@ export default Vue.extend({
 @media screen and(min-width: 770px) {
   .Head_Wrap {
     .Head_Img {
-      top: -247vw;
+      top: -248vw;
       &.Open_Nav_Img {
         top: -170vw;
       }

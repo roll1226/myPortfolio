@@ -49,7 +49,7 @@ body {
 .Title_Wrap {
   margin-top: 20vh;
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
   letter-spacing: 2rem;
   padding-left: 2rem;
   color: #985633;
@@ -57,9 +57,9 @@ body {
 }
 
 .Sub_Title {
-  margin-top: 10vh;
+  margin-top: 5vh;
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
   letter-spacing: 2rem;
   padding-left: 2rem;
   color: #985633;
@@ -78,10 +78,13 @@ body {
 @media screen and(min-width: 770px) {
   .Title_Wrap {
     margin-top: 25vh;
+    font-size: 4rem;
   }
 
   .Sub_Title {
+    margin-top: 10vh;
     margin-top: 14vh;
+    font-size: 4rem;
   }
 }
 </style>
