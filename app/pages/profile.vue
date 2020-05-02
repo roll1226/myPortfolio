@@ -27,6 +27,12 @@ export default Vue.extend({
 
   async asyncData({ store }) {
     await store.commit('nav/SET_IS_NAV', false)
+  },
+
+  head() {
+    return {
+      title: 'わたし'
+    }
   }
 })
 </script>

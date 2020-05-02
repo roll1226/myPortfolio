@@ -81,7 +81,7 @@ body {
 
 @media screen and(min-width: 770px) {
   .Title_Wrap {
-    margin-top: 25vh;
+    margin-top: 22vh;
     font-size: 4rem;
   }
 
@@ -92,7 +92,7 @@ body {
   }
 
   .No_Scroll {
-    padding-bottom: 9.5vh;
+    padding-bottom: 12vh;
   }
 }
 </style>

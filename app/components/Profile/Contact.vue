@@ -53,8 +53,8 @@ export default Vue.extend({
     'Helvetica Neue', Arial, sans-serif;
 }
 
-@mixin commonCss($height: auto, $paddding: 0.8rem, $fontSize: 1.5rem) {
-  font-size: $fontSize;
+@mixin commonCss($height: auto, $paddding: 0.8rem) {
+  font-size: 1rem;
   box-sizing: border-box;
   width: 100%;
   height: $height;
@@ -78,7 +78,7 @@ export default Vue.extend({
 
   input[type='text'] {
     @include fontFamily();
-    @include commonCss(auto, 0.5rem, 1rem);
+    @include commonCss(auto, 0.5rem);
 
     &:focus {
       @include commonFocus();
@@ -88,7 +88,7 @@ export default Vue.extend({
 
 .Textarea_Wrap {
   @include fontFamily();
-  @include commonCss(7rem, 0.5rem, 1rem);
+  @include commonCss(7rem, 0.5rem);
 
   &:focus {
     @include commonFocus();
@@ -106,7 +106,7 @@ export default Vue.extend({
     padding: 0.5rem 1.2rem;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1em;
     color: #985633;
     border: solid 2px #985633;
     border-radius: 10px;
@@ -130,7 +130,13 @@ export default Vue.extend({
   }
 
   .Textarea_Wrap {
-    @include commonCss(10rem, 0.8rem, 1.5rem);
+    @include commonCss(9rem, 0.8rem);
+  }
+
+  .Send_Btn_Wrap {
+    .Send_Btn {
+      font-size: 1.3em;
+    }
   }
 }
 </style>
