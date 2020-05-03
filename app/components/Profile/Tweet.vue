@@ -7,7 +7,7 @@
     <div class="Twitter_Wrap">
       <a
         class="twitter-timeline"
-        data-chrome="noscrollbar nofooter noheader transparent"
+        data-chrome="noscrollbar nofooter noheader"
         data-width="600"
         data-height="500"
         href="https://twitter.com/Tonotomo1226?ref_src=twsrc%5Etfw"
@@ -29,11 +29,19 @@ export default Vue.extend({})
 
 <style lang="scss">
 .Twitter_Wrap {
-  margin-top: 2vw;
+  margin-top: 5vw;
   text-align: center;
+  padding: 0 10vw;
 
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+
+@media screen and(min-width: 770px) {
+  .Twitter_Wrap {
+    margin-top: 2vw;
+    padding: 0 0vw;
   }
 }
 </style>

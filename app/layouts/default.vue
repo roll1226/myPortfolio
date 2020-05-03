@@ -73,7 +73,7 @@ body {
 
   height: 100vh;
   overflow-y: auto;
-  padding-bottom: 19vh;
+  padding-bottom: 15vh;
 
   &::-webkit-scrollbar {
     display: none;
@@ -94,7 +94,7 @@ body {
   }
 
   .No_Scroll {
-    padding-bottom: 5vh;
+    padding-bottom: 2vh;
   }
 }
 </style>
