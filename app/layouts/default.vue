@@ -50,7 +50,7 @@ body {
   margin-top: 20vh;
   text-align: center;
   font-size: 3rem;
-  letter-spacing: 2rem;
+  letter-spacing: 1.5rem;
   padding-left: 2rem;
   color: #985633;
   text-shadow: 3px 3px 4px #b3b3b3;
@@ -67,6 +67,7 @@ body {
 }
 
 .No_Scroll {
+  padding-top: 1vw;
   -ms-overflow-style: none;
   scrollbar-width: none;
 
@@ -83,6 +84,7 @@ body {
   .Title_Wrap {
     margin-top: 22vh;
     font-size: 4rem;
+    letter-spacing: 2rem;
   }
 
   .Sub_Title {
@@ -92,7 +94,7 @@ body {
   }
 
   .No_Scroll {
-    padding-bottom: 12vh;
+    padding-bottom: 5vh;
   }
 }
 </style>

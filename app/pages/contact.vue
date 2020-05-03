@@ -5,15 +5,19 @@
     </h3>
 
     <div class="Input_Wrap">
-      <input type="text" placeholder="タイトル" />
+      <input type="text" placeholder="タイトル" @blur="backtop" />
     </div>
 
     <div class="Input_Wrap">
-      <input type="text" placeholder="メールアドレス" />
+      <input type="text" placeholder="メールアドレス" @blur="backtop" />
     </div>
 
     <div class="Input_Wrap">
-      <textarea class="Textarea_Wrap" placeholder="内容"></textarea>
+      <textarea
+        class="Textarea_Wrap"
+        placeholder="内容"
+        @blur="backtop"
+      ></textarea>
     </div>
 
     <div class="Send_Btn_Wrap">
@@ -43,6 +47,24 @@ export default Vue.extend({
       title: '',
       email: '',
       contact: ''
+    }
+  },
+
+  methods: {
+    backtop() {
+      let currentY = window.pageYOffset
+      const step = 0 / currentY > 1 ? 10 : 100
+      const timeStep = (0 / currentY) * step
+      const intervalID = setInterval(scrollUp, timeStep)
+
+      function scrollUp() {
+        currentY = window.pageYOffset
+        if (currentY === 0) {
+          clearInterval(intervalID)
+        } else {
+          scrollBy(0, -step)
+        }
+      }
     }
   },
 
