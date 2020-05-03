@@ -1,5 +1,5 @@
 <template>
-  <div class="Card_Wrap">
+  <div class="Card_Wrap" @click="openModal(work)">
     <div class="Card_Img_Wrap">
       <img :src="work.src" :alt="work.title" />
     </div>
@@ -10,7 +10,7 @@
       </h3>
 
       <p class="Card_Text">
-        {{ work.text }}
+        {{ work.description }}
       </p>
     </div>
   </div>
@@ -18,18 +18,21 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-
-type Work = {
-  title: string
-  src: string
-  text: string
-}
+import { IWork } from '@/store/work'
 
 export default Vue.extend({
   props: {
     work: {
-      type: Object as PropType<Work>,
+      type: Object as PropType<IWork>,
       required: true
+    }
+  },
+
+  methods: {
+    openModal(work: IWork) {
+      this.$store.commit('work/SET_MODAL', true)
+
+      this.$store.commit('work/SET_WORK', work)
     }
   }
 })
@@ -41,7 +44,13 @@ export default Vue.extend({
   margin: 2.5vh auto 2.5vh;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 3.5px 3.5px 1.5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  transition: 300ms;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+  }
 
   .Card_Img_Wrap {
     width: 100%;
@@ -60,11 +69,12 @@ export default Vue.extend({
 
     .Card_Title {
       font-size: 1.7rem;
-      margin-bottom: 1rem;
+      letter-spacing: 0.3rem;
     }
 
     .Card_Text {
       line-height: 1.5rem;
+      letter-spacing: 0.1rem;
       white-space: pre-line;
     }
   }
@@ -72,7 +82,7 @@ export default Vue.extend({
 
 @media screen and (min-width: 770px) {
   .Card_Wrap {
-    max-width: 25vw;
+    max-width: 30%;
     margin: 5vh auto;
   }
 }

@@ -4,9 +4,17 @@
       作品
     </h2>
 
-    <div v-for="(work, index) in works" :key="index" class="Works_Card_Wrap">
-      <WorkCard :work="work" />
-    </div>
+    <template v-if="!loading">
+      <div v-for="(work, index) in works" :key="index" class="Works_Card_Wrap">
+        <WorkCard :work="work" />
+      </div>
+
+      <WorkModal />
+    </template>
+
+    <template v-else>
+      <WorkLoading />
+    </template>
   </div>
 </template>
 
@@ -14,20 +22,20 @@
 import Vue from 'vue'
 import { firestore } from '@/plugins/firebase'
 import WorkCard from '~/components/Works/WorkCard.vue'
-
-export interface IWork {
-  title: string
-  text: string
-  src: string
-}
+import WorkModal from '~/components/Works/WorkModal.vue'
+import WorkLoading from '~/components/Works/WorkLoading.vue'
+import { IWork } from '@/store/work'
 
 type Data = {
   works: IWork[]
+  loading: boolean
 }
 
 export default Vue.extend({
   components: {
-    WorkCard
+    WorkCard,
+    WorkModal,
+    WorkLoading
   },
 
   async asyncData({ store }) {
@@ -35,14 +43,21 @@ export default Vue.extend({
   },
 
   data(): Data {
-    return { works: [] }
+    return {
+      works: [],
+      loading: false
+    }
   },
 
   async created() {
+    this.loading = true
+
     const works = await firestore.collection('works').get()
     for (let index = 0; index < works.size; index++) {
       this.works.push(works.docs[index].data() as IWork)
     }
+
+    this.loading = false
   },
 
   head() {
