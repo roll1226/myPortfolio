@@ -30,9 +30,9 @@
         v-if="nowRoute !== 'works'"
         class="Nav"
         :class="{
-          Open_Nav_2: isNav && nowRoute !== 'memories',
-          Open_Nav_3: isNav && nowRoute === 'memories',
-          Nav_Space: nowRoute !== 'memories',
+          Open_Nav_2: isNav && nowRoute !== 'contact',
+          Open_Nav_3: isNav && nowRoute === 'contact',
+          Nav_Space: nowRoute !== 'contact',
           Close_Nav: !isNav
         }"
       >
@@ -42,12 +42,12 @@
       </li>
 
       <li
-        v-if="nowRoute !== 'memories'"
+        v-if="nowRoute !== 'contact'"
         class="Nav"
         :class="{ Open_Nav_3: isNav, Close_Nav: !isNav }"
       >
-        <nuxt-link to="/memories">
-          メモリー
+        <nuxt-link to="/contact">
+          コンタクト
         </nuxt-link>
       </li>
     </ul>

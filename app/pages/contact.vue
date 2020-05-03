@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <h3 class="Sub_Title">
-      お問い合わせ
+  <div class="No_Scroll">
+    <h3 class="Title_Wrap">
+      コンタクト
     </h3>
 
     <div class="Input_Wrap">
@@ -34,11 +34,21 @@ type Data = {
 }
 
 export default Vue.extend({
+  async asyncData({ store }) {
+    await store.commit('nav/SET_IS_NAV', false)
+  },
+
   data(): Data {
     return {
       title: '',
       email: '',
       contact: ''
+    }
+  },
+
+  head() {
+    return {
+      title: 'コンタクト'
     }
   }
 })

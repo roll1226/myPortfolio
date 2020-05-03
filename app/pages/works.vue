@@ -13,7 +13,7 @@
     </template>
 
     <template v-else>
-      <WorkLoading />
+      <AllLoading />
     </template>
   </div>
 </template>
@@ -23,7 +23,7 @@ import Vue from 'vue'
 import { firestore } from '@/plugins/firebase'
 import WorkCard from '~/components/Works/WorkCard.vue'
 import WorkModal from '~/components/Works/WorkModal.vue'
-import WorkLoading from '~/components/Works/WorkLoading.vue'
+import AllLoading from '~/components/AllLoading.vue'
 import { IWork } from '@/store/work'
 
 type Data = {
@@ -35,7 +35,7 @@ export default Vue.extend({
   components: {
     WorkCard,
     WorkModal,
-    WorkLoading
+    AllLoading
   },
 
   async asyncData({ store }) {

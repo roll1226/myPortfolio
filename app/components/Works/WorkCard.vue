@@ -45,7 +45,7 @@ export default Vue.extend({
   background: #fff;
   border-radius: 10px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-  transition: 300ms;
+  transition: 200ms;
   cursor: pointer;
 
   &:hover {

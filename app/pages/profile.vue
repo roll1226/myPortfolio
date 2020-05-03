@@ -7,8 +7,6 @@
     <About />
 
     <Skill />
-
-    <Contact />
   </div>
 </template>
 
@@ -16,13 +14,11 @@
 import Vue from 'vue'
 import About from '~/components/Profile/About.vue'
 import Skill from '~/components/Profile/Skill.vue'
-import Contact from '~/components/Profile/Contact.vue'
 
 export default Vue.extend({
   components: {
     About,
-    Skill,
-    Contact
+    Skill
   },
 
   async asyncData({ store }) {
