@@ -88,7 +88,7 @@ export default Vue.extend({
 
 <style lang="scss">
 @mixin animetionNav($time, $timing, $opacity) {
-  transition: all $time linear $timing;
+  transition: all $time ease-in $timing;
   opacity: $opacity;
 }
 
@@ -118,10 +118,10 @@ export default Vue.extend({
       text-decoration: none;
       color: #fdff99;
       text-shadow: 2px 2px 3px #000;
-      @include animetionNav(300ms, 0ms, 1);
+      @include animetionNav(250ms, 0ms, 1);
 
       &:hover {
-        background: #000;
+        letter-spacing: 1.5rem;
       }
     }
 
@@ -150,13 +150,17 @@ export default Vue.extend({
 @media screen and(min-width: 770px) {
   .Nav_Wrap {
     .Nav {
-      font-size: 3rem;
+      font-size: 2.8rem;
       letter-spacing: 2rem;
       width: auto;
 
       a {
         padding-left: 2rem;
-        text-shadow: 3px 3px 4px #000;
+        text-shadow: 2.5px 2.5px 4px #000;
+
+        &:hover {
+          letter-spacing: 2.5rem;
+        }
       }
 
       &.Nav_Space {
