@@ -94,10 +94,10 @@ export default Vue.extend({
 
 @keyframes hoverAnimetion {
   from {
-    opacity: 1;
+    opacity: 0.6;
   }
   to {
-    opacity: 0;
+    opacity: 1;
   }
 }
 
@@ -127,7 +127,7 @@ export default Vue.extend({
       text-decoration: none;
       color: #fdff99;
       text-shadow: 2px 2px 3px #000;
-      @include animetionNav(250ms, 0ms, 1);
+      @include animetionNav(250ms, 0ms, 0.6);
 
       &:hover {
         animation: hoverAnimetion 300ms linear 0s forwards;
@@ -169,7 +169,7 @@ export default Vue.extend({
       }
 
       &.Nav_Space {
-        padding-bottom: 9rem;
+        padding-bottom: 8rem;
       }
     }
   }
