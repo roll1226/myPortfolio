@@ -92,6 +92,15 @@ export default Vue.extend({
   opacity: $opacity;
 }
 
+@keyframes hoverAnimetion {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .Nav_Wrap {
   z-index: 42;
   position: absolute;
@@ -121,7 +130,7 @@ export default Vue.extend({
       @include animetionNav(250ms, 0ms, 1);
 
       &:hover {
-        letter-spacing: 1.5rem;
+        animation: hoverAnimetion 300ms linear 0s forwards;
       }
     }
 
@@ -157,10 +166,6 @@ export default Vue.extend({
       a {
         padding-left: 2rem;
         text-shadow: 2.5px 2.5px 4px #000;
-
-        &:hover {
-          letter-spacing: 2.5rem;
-        }
       }
 
       &.Nav_Space {

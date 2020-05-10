@@ -16,7 +16,12 @@
       :class="{ Open_Nav: isNav, Close_Nav: !isNav }"
       @click="navBtn"
     >
-      <img src="~/assets/img/pudding.png" alt="pudding.png" />
+      <template v-if="!isNav">
+        <img :src="menuImg" alt="pudding.png" />
+      </template>
+      <template v-else>
+        <img :src="closeImg" alt="pudding.png" />
+      </template>
     </button>
   </div>
 </template>
@@ -34,6 +39,13 @@ export default Vue.extend({
   components: {
     NavList,
     NavPlate
+  },
+
+  data() {
+    return {
+      menuImg: require('~/assets/img/puddingMenu.png'),
+      closeImg: require('~/assets/img/puddingClose.png')
+    }
   },
 
   computed: {
