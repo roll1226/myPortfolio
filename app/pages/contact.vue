@@ -5,15 +5,26 @@
     </h3>
 
     <div class="Input_Wrap">
-      <input type="text" placeholder="タイトル" @blur="backtop" />
+      <input
+        v-model="title"
+        type="text"
+        placeholder="タイトル"
+        @blur="backtop"
+      />
     </div>
 
     <div class="Input_Wrap">
-      <input type="text" placeholder="メールアドレス" @blur="backtop" />
+      <input
+        v-model="email"
+        type="text"
+        placeholder="メールアドレス"
+        @blur="backtop"
+      />
     </div>
 
     <div class="Input_Wrap">
       <textarea
+        v-model="contact"
         class="Textarea_Wrap"
         placeholder="内容"
         @blur="backtop"
@@ -21,7 +32,7 @@
     </div>
 
     <div class="Send_Btn_Wrap">
-      <button class="Send_Btn">
+      <button class="Send_Btn" @click="sendContact">
         送信
       </button>
     </div>
@@ -30,6 +41,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { functions } from '@/plugins/firebase'
 
 type Data = {
   title: string
@@ -65,6 +77,22 @@ export default Vue.extend({
           scrollBy(0, -step)
         }
       }
+    },
+
+    async sendContact() {
+      const contactFunc = functions.httpsCallable('email')
+      const contactData = {
+        title: this.title,
+        email: this.email,
+        contact: this.contact
+      }
+      await contactFunc(contactData)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((e) => {
+          console.log(e)
+        })
     }
   },
 
@@ -92,7 +120,7 @@ export default Vue.extend({
   height: $height;
   padding: $paddding;
   transition: 0.3s;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.2rem;
   color: #000;
   border: 2px solid #1b2538;
   border-radius: 10px;
