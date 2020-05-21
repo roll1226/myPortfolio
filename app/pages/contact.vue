@@ -1,5 +1,7 @@
 <template>
   <div class="No_Scroll">
+    <Snackbar />
+
     <h3 class="Title_Wrap">
       コンタクト
     </h3>
@@ -32,7 +34,7 @@
     </div>
 
     <div class="Send_Btn_Wrap">
-      <button class="Send_Btn" @click="sendContact">
+      <button class="Send_Btn" :disabled="!isContact" @click="sendContact">
         送信
       </button>
     </div>
@@ -42,6 +44,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { functions } from '@/plugins/firebase'
+import Snackbar from '~/components/Contact/Snackbar.vue'
 
 type Data = {
   title: string
@@ -50,6 +53,10 @@ type Data = {
 }
 
 export default Vue.extend({
+  components: {
+    Snackbar
+  },
+
   async asyncData({ store }) {
     await store.commit('nav/SET_IS_NAV', false)
   },
@@ -59,6 +66,14 @@ export default Vue.extend({
       title: '',
       email: '',
       contact: ''
+    }
+  },
+
+  computed: {
+    isContact(): boolean {
+      if (this.title === '' || this.email === '' || this.contact === '')
+        return false
+      else return true
     }
   },
 
@@ -80,19 +95,33 @@ export default Vue.extend({
     },
 
     async sendContact() {
-      const contactFunc = functions.httpsCallable('email')
-      const contactData = {
-        title: this.title,
-        email: this.email,
-        contact: this.contact
+      try {
+        const contactFunc = functions.httpsCallable('email')
+        const contactData = {
+          title: this.title,
+          email: this.email,
+          contact: this.contact
+        }
+        const contact: { data: string } = await contactFunc(contactData)
+        const contactJson: { message: string } = JSON.parse(contact.data)
+
+        if (contactJson.message === 'success！') {
+          this.snackbar('送信しました。', true)
+        } else {
+          this.snackbar('送信に失敗しました。', true)
+        }
+      } catch (error) {
+        this.snackbar('送信に失敗しました。', true)
       }
-      await contactFunc(contactData)
-        .then((res) => {
-          console.log(res)
-        })
-        .catch((e) => {
-          console.log(e)
-        })
+    },
+
+    snackbar(text: string, bool: boolean) {
+      this.$store.commit('contact/SET_IS_SNACKBAR', bool)
+      this.$store.commit('contact/SET_SNACKBAR_TEXT', text)
+
+      setTimeout(() => {
+        this.snackbar('', false)
+      }, 2500)
     }
   },
 
@@ -175,6 +204,11 @@ export default Vue.extend({
 
     &:hover {
       @include commonFocus();
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      pointer-events: none;
     }
   }
 }
