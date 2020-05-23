@@ -33,10 +33,17 @@ function send(response: functions.Response, statusCode: number, body: any) {
 // 管理者用のメールテンプレート
 const ContactEmail = (data: { email: string; contact: string }) => {
   return `
-    メールアドレス: ${data.email}
+    <h1>
+      ポートフォリオからのメールです。
+    </h1>
 
-    <br />
-    ----------------------------------------------------------------------------------------------------
+    <h2>
+      メールアドレス: ${data.email}
+    </h2>
+
+    <p>
+      ----------------------------------------------------------------------------------------------------
+    </p>
 
     <p style="white-space:pre-wrap;">
       ${data.contact}

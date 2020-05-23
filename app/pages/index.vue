@@ -1,11 +1,8 @@
 <template>
   <div class="Index_Wrap">
     <h1 class="Portfolio_Title My_Name">
-      鶴巻智康
+      鶴巻智康の
     </h1>
-    <h2 class="Portfolio_Title">
-      の
-    </h2>
     <h2 class="Portfolio_Title">
       ポートフォリオ
     </h2>
@@ -58,7 +55,8 @@ export default Vue.extend({
 
     &.My_Name {
       @include fontFamily();
-      letter-spacing: 1rem;
+      font-size: 2.1rem;
+      letter-spacing: 0.8rem;
     }
   }
 
@@ -77,6 +75,11 @@ export default Vue.extend({
       letter-spacing: 0.7rem;
       padding-top: 0.5vh;
       padding-left: 1vw;
+
+      &.My_Name {
+        letter-spacing: 1rem;
+        font-size: 4.1rem;
+      }
     }
 
     .Protfolio_Spoon_Img {
