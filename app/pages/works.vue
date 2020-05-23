@@ -55,6 +55,7 @@ export default Vue.extend({
     const works = await firestore.collection('works').get()
     for (let index = 0; index < works.size; index++) {
       this.works.push(works.docs[index].data() as IWork)
+      this.loading = false
     }
 
     this.loading = false

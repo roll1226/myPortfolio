@@ -39,6 +39,16 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+@keyframes workCard {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .Card_Wrap {
   max-width: 100%;
   margin: 2.5vh auto 2.5vh;
@@ -47,6 +57,7 @@ export default Vue.extend({
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   transition: 200ms;
   cursor: pointer;
+  animation: workCard 1s ease-out 0s forwards;
 
   &:hover {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
