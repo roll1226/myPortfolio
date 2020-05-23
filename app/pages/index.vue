@@ -1,7 +1,7 @@
 <template>
   <div class="Index_Wrap">
-    <h1 class="Portfolio_Title">
-      プリン好きプログラマ
+    <h1 class="Portfolio_Title My_Name">
+      鶴巻智康
     </h1>
     <h2 class="Portfolio_Title">
       の
@@ -29,6 +29,14 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+@mixin fontFamily() {
+  font-family: 'ヒラギノ丸ゴ Pro W4', 'ヒラギノ丸ゴ Pro',
+    'Hiragino Maru Gothic Pro', 'ヒラギノ角ゴ Pro W3',
+    'Hiragino Kaku Gothic Pro', 'HG丸ｺﾞｼｯｸM-PRO', 'HGMaruGothicMPRO',
+    'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
+
 .Index_Wrap {
   width: 100vw;
   height: 100vh;
@@ -36,6 +44,7 @@ export default Vue.extend({
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   .Portfolio_Title {
     text-align: center;
     position: relative;
@@ -46,6 +55,11 @@ export default Vue.extend({
     letter-spacing: 0.5rem;
     padding-top: 1vh;
     padding-left: 3vw;
+
+    &.My_Name {
+      @include fontFamily();
+      letter-spacing: 1rem;
+    }
   }
 
   .Protfolio_Spoon_Img {
