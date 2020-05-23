@@ -33,8 +33,10 @@ export default Vue.extend({
     return {
       skills: [
         { name: 'Vue, Nuxt', color: '#40B27F', value: '80' },
-        { name: 'React, Next', color: '#6CD3FE', value: '30' },
-        { name: 'Typescript', color: '#0177C7', value: '60' }
+        { name: 'React, Next', color: '#6CD3FE', value: '35' },
+        { name: 'Typescript', color: '#0177C7', value: '60' },
+        { name: 'WebGL', color: '#0177C7', value: '30' },
+        { name: 'Firebase', color: '#F8C52A', value: '70' }
       ]
     }
   }

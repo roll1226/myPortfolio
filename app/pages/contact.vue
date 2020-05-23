@@ -6,37 +6,47 @@
       コンタクト
     </h3>
 
-    <div class="Input_Wrap">
-      <input
-        v-model="title"
-        type="text"
-        placeholder="タイトル"
-        @blur="backtop"
-      />
-    </div>
+    <form>
+      <div class="Input_Wrap">
+        <input
+          v-model="title"
+          type="text"
+          placeholder="タイトル"
+          @blur="backtop"
+        />
+      </div>
 
-    <div class="Input_Wrap">
-      <input
-        v-model="email"
-        type="text"
-        placeholder="メールアドレス"
-        @blur="backtop"
-      />
-    </div>
+      <div class="Input_Wrap">
+        <input
+          v-model="email"
+          type="text"
+          placeholder="メールアドレス"
+          @blur="backtop"
+        />
+      </div>
 
-    <div class="Input_Wrap">
-      <textarea
-        v-model="contact"
-        class="Textarea_Wrap"
-        placeholder="内容"
-        @blur="backtop"
-      ></textarea>
-    </div>
+      <div class="Input_Wrap">
+        <textarea
+          v-model="contact"
+          class="Textarea_Wrap"
+          placeholder="内容"
+          @blur="backtop"
+        ></textarea>
+      </div>
+    </form>
 
-    <div class="Send_Btn_Wrap">
+    <div v-if="!loading" class="Send_Btn_Wrap">
       <button class="Send_Btn" :disabled="!isContact" @click="sendContact">
         送信
       </button>
+    </div>
+
+    <div v-else class="Loading_Contact">
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -50,6 +60,7 @@ type Data = {
   title: string
   email: string
   contact: string
+  loading: boolean
 }
 
 export default Vue.extend({
@@ -65,7 +76,8 @@ export default Vue.extend({
     return {
       title: '',
       email: '',
-      contact: ''
+      contact: '',
+      loading: false
     }
   },
 
@@ -95,6 +107,7 @@ export default Vue.extend({
     },
 
     async sendContact() {
+      this.loading = true
       try {
         const contactFunc = functions.httpsCallable('email')
         const contactData = {
@@ -107,6 +120,10 @@ export default Vue.extend({
 
         if (contactJson.message === 'success！') {
           this.snackbar('送信しました。', true)
+
+          this.title = ''
+          this.email = ''
+          this.contact = ''
         } else {
           this.snackbar('送信に失敗しました。', true)
         }
@@ -116,6 +133,7 @@ export default Vue.extend({
     },
 
     snackbar(text: string, bool: boolean) {
+      this.loading = false
       this.$store.commit('contact/SET_IS_SNACKBAR', bool)
       this.$store.commit('contact/SET_SNACKBAR_TEXT', text)
 
@@ -230,6 +248,58 @@ export default Vue.extend({
   .Send_Btn_Wrap {
     .Send_Btn {
       font-size: 1.3em;
+    }
+  }
+}
+
+.Loading_Contact {
+  .spinner {
+    margin: 2.5vh auto 0;
+    text-align: center;
+  }
+
+  .spinner > div {
+    width: 18px;
+    height: 18px;
+    background-color: #985633;
+
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  }
+
+  .spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+  }
+
+  .spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+  }
+
+  @-webkit-keyframes sk-bouncedelay {
+    0%,
+    80%,
+    100% {
+      -webkit-transform: scale(0);
+    }
+    40% {
+      -webkit-transform: scale(1);
+    }
+  }
+
+  @keyframes sk-bouncedelay {
+    0%,
+    80%,
+    100% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    }
+    40% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
     }
   }
 }

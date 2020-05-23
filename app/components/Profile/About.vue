@@ -1,7 +1,7 @@
 <template>
   <div class="About_Wrap">
     <p>
-      専門学校に通っている学生が、<span class="My_Name">鶴巻智康</span>である。
+      専門学校に通っている学生が、<span class="My_Name">鶴巻智康</span>です。
     </p>
 
     <p>
@@ -10,7 +10,7 @@
         ><span class="Brackets">「</span>ありがとう<span class="Brackets"
           >」</span
         ></span
-      >と言ってもらえるサービスを作るべく、学んでいる。
+      >と言ってもらえるサービスを作るべく、学んでいます。
     </p>
   </div>
 </template>

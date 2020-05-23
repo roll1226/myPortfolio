@@ -91,7 +91,7 @@ export default Vue.extend({
   .Head_Img {
     z-index: 40;
     position: absolute;
-    top: -225vw;
+    top: -235vw;
     left: 0px;
     width: 100vw;
     transition: all 300ms cubic-bezier(0.28, 0.52, 0.03, 0.9) 0ms;
