@@ -34,7 +34,7 @@
             </a>
           </p>
 
-          <p class="Fa_Text">
+          <p v-if="work.page !== ''" class="Fa_Text">
             <a :href="work.page" target="_block">
               <fa class="Fa_Icon" :icon="faExternalLinkAlt" />
               Open Site
