@@ -30,14 +30,14 @@
           <p class="Fa_Text">
             <a :href="work.github" target="_block">
               <fa class="Fa_Icon" :icon="faGithub" />
-              github
+              Github
             </a>
           </p>
 
           <p class="Fa_Text">
             <a :href="work.page" target="_block">
               <fa class="Fa_Icon" :icon="faExternalLinkAlt" />
-              open page
+              Open Site
             </a>
           </p>
         </div>
@@ -91,6 +91,13 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+@mixin fontFamily() {
+  font-family: 'ヒラギノ丸ゴ Pro W4', 'ヒラギノ丸ゴ Pro',
+    'Hiragino Maru Gothic Pro', 'ヒラギノ角ゴ Pro W3',
+    'Hiragino Kaku Gothic Pro', 'HG丸ｺﾞｼｯｸM-PRO', 'HGMaruGothicMPRO',
+    'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
 @keyframes openModal {
   from {
     width: 0vw;
@@ -104,6 +111,7 @@ export default Vue.extend({
 }
 
 .Mask {
+  @include fontFamily();
   position: absolute;
   z-index: 990;
   top: 0;
@@ -168,8 +176,7 @@ export default Vue.extend({
 
         .Work_Tag {
           display: inline-block;
-          padding: 0.4em;
-          padding-left: 0.5rem;
+          padding: 0.2em 0.5rem;
           letter-spacing: 0.1rem;
           margin-bottom: 0.5rem;
           margin-right: 0.4rem;
@@ -201,7 +208,7 @@ export default Vue.extend({
             text-decoration: none;
             color: #985633;
             border: solid 1px #985633;
-            padding: 0.3rem 0.7rem;
+            padding: 0.1rem 0.7rem;
             border-radius: 500px;
             display: inline-block;
             transition: 200ms;
@@ -240,10 +247,10 @@ export default Vue.extend({
       height: 75vh;
 
       .Work_Card_Img_Wrap {
-        height: 470px;
+        height: 420px;
 
         img {
-          max-height: 470px;
+          max-height: 420px;
         }
       }
 

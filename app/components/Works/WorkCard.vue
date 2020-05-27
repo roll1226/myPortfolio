@@ -10,7 +10,7 @@
       </h3>
 
       <p class="Card_Text">
-        {{ work.description }}
+        {{ work.text }}
       </p>
     </div>
   </div>
@@ -39,6 +39,13 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+@mixin fontFamily() {
+  font-family: 'ヒラギノ丸ゴ Pro W4', 'ヒラギノ丸ゴ Pro',
+    'Hiragino Maru Gothic Pro', 'ヒラギノ角ゴ Pro W3',
+    'Hiragino Kaku Gothic Pro', 'HG丸ｺﾞｼｯｸM-PRO', 'HGMaruGothicMPRO',
+    'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
 @keyframes workCard {
   from {
     opacity: 0;
@@ -50,7 +57,8 @@ export default Vue.extend({
   }
 }
 .Card_Wrap {
-  max-width: 100%;
+  @include fontFamily();
+  width: 100%;
   margin: 2.5vh auto 2.5vh;
   background: #fff;
   border-radius: 10px;
@@ -81,12 +89,15 @@ export default Vue.extend({
     .Card_Title {
       font-size: 1.7rem;
       letter-spacing: 0.3rem;
+      margin-bottom: -15px;
     }
 
     .Card_Text {
+      width: 100%;
       line-height: 1.5rem;
       letter-spacing: 0.1rem;
       white-space: pre-line;
+      word-wrap: break-word;
     }
   }
 }

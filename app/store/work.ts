@@ -9,7 +9,6 @@ export interface IWork {
   title: string
   src: string
   text: string
-  description: string
   technologies: Array<string>
   github: string
   page: string
@@ -26,7 +25,6 @@ export const state = (): IState => ({
     title: '',
     src: '',
     text: '',
-    description: '',
     technologies: [],
     github: '',
     page: ''

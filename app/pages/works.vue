@@ -5,8 +5,8 @@
     </h2>
 
     <template v-if="!loading">
-      <div v-for="(work, index) in works" :key="index" class="Works_Card_Wrap">
-        <WorkCard :work="work" />
+      <div class="Works_Card_Wrap">
+        <WorkCard v-for="(work, index) in works" :key="index" :work="work" />
       </div>
 
       <WorkModal />
