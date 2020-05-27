@@ -10,7 +10,7 @@
       </h3>
 
       <p class="Card_Text">
-        {{ work.text }}
+        {{ countText(work.text) }}
       </p>
     </div>
   </div>
@@ -33,6 +33,14 @@ export default Vue.extend({
       this.$store.commit('work/SET_MODAL', true)
 
       this.$store.commit('work/SET_WORK', work)
+    },
+
+    countText(text: string) {
+      if (text.length <= 40) {
+        return text
+      } else {
+        return text.slice(0, 38) + '...'
+      }
     }
   }
 })

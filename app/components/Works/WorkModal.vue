@@ -140,7 +140,7 @@ export default Vue.extend({
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
 
-    animation: openModal 150ms linear 0s forwards;
+    animation: openModal 200ms linear 0s forwards;
 
     overflow-y: auto;
     overflow-x: hidden;
