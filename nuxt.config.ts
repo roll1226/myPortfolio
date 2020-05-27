@@ -15,7 +15,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content: '鶴巻智康のポートフォリオ'
       },
       {
         hid: 'twitter:card',
@@ -40,7 +40,7 @@ export default {
       {
         hid: 'og:description',
         name: 'og:description',
-        content: '鶴巻智康のポートフォリオ'
+        content: ''
       },
       {
         hid: 'og:image',

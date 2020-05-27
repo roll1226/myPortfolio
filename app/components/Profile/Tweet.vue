@@ -5,7 +5,7 @@
     </h3>
 
     <div class="Twitter_Wrap">
-      <a
+      <!-- <a
         class="twitter-timeline"
         data-chrome="noscrollbar nofooter noheader"
         data-width="600"
@@ -17,14 +17,38 @@
         async
         src="https://platform.twitter.com/widgets.js"
         charset="utf-8"
-      ></script>
+      ></script> -->
+      <client-only>
+        <div style="margin: 0 auto;">
+          <Timeline
+            :id="twitterId"
+            :source-type="'profile'"
+            :options="{
+              height: twitterHeight,
+              width: '600',
+              chrome: 'nofooter noheader noscrollbar'
+            }"
+          />
+        </div>
+      </client-only>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-export default Vue.extend({})
+import { Timeline } from 'vue-tweet-embed'
+export default Vue.extend({
+  components: {
+    Timeline
+  },
+  data() {
+    return {
+      twitterId: 'Tonotomo1226',
+      twitterHeight: '500'
+    }
+  }
+})
 </script>
 
 <style lang="scss">

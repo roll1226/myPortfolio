@@ -32,7 +32,8 @@
     "nuxt": "^2.0.0",
     "nuxt-fontawesome": "^0.4.0",
     "sass-loader": "^8.0.2",
-    "style-loader": "^1.2.1"
+    "style-loader": "^1.2.1",
+    "vue-tweet-embed": "^2.4.0"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.6.0",
