@@ -46,7 +46,7 @@ export default {
         hid: 'og:image',
         name: 'og:image',
         content:
-          'https://firebasestorage.googleapis.com/v0/b/roll1226.appspot.com/o/ogp%2FmyportfolioOgp.png?alt=media&token=7a8ef1bc-f213-4e0d-a007-2b637931ea70'
+          'https://firebasestorage.googleapis.com/v0/b/roll1226.appspot.com/o/ogp%2FmyportfolioOgp.png?alt=media&token=d31fd9eb-506d-4966-92c7-5563be6f7a76'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],

@@ -25,8 +25,8 @@
             :source-type="'profile'"
             :options="{
               height: twitterHeight,
-              width: '600',
-              chrome: 'nofooter noheader noscrollbar'
+              width: twitterWidth,
+              chrome: twitterDataChrome
             }"
           />
         </div>
@@ -38,14 +38,25 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Timeline } from 'vue-tweet-embed'
+
+type Data = {
+  twitterId: string
+  twitterHeight: string
+  twitterWidth: string
+  twitterDataChrome: string
+}
+
 export default Vue.extend({
   components: {
     Timeline
   },
-  data() {
+
+  data(): Data {
     return {
       twitterId: 'Tonotomo1226',
-      twitterHeight: '500'
+      twitterHeight: '500',
+      twitterWidth: '600',
+      twitterDataChrome: 'nofooter noheader noscrollbar'
     }
   }
 })

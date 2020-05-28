@@ -9,18 +9,27 @@
       alt="spoonImg"
       class="Protfolio_Spoon_Img"
     />
+
+    <div class="Index_Plate">
+      <div class="Plate"></div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
+type Data = {
+  whatWidth: boolean
+  title: string
+}
+
 export default Vue.extend({
   async asyncData({ store }) {
     await store.commit('nav/SET_IS_NAV', false)
   },
 
-  data() {
+  data(): Data {
     return {
       whatWidth: false,
       title: ''
@@ -30,6 +39,7 @@ export default Vue.extend({
   mounted() {
     this.$nextTick(() => {
       window.addEventListener('resize', this.calculateWindowWidth)
+      this.calculateWindowWidth()
     })
   },
   beforeDestroy() {
@@ -75,7 +85,7 @@ export default Vue.extend({
     position: relative;
     z-index: 2;
     color: #985633;
-    text-shadow: 2.5px 2.5px 7px #b3b3b3;
+    text-shadow: 2.5px 2.5px 3px #b3b3b3;
     padding-top: 1vh;
     padding-left: 3vw;
     font-size: 2.1rem;
@@ -86,6 +96,40 @@ export default Vue.extend({
     z-index: 1;
     position: absolute;
     width: 98vw;
+  }
+
+  .Index_Plate {
+    position: absolute;
+    transform-origin: center;
+
+    .Plate {
+      width: 450px;
+      height: 450px;
+      border-bottom: solid 7px #ddd;
+      background: white;
+      border-radius: 50%;
+
+      box-shadow: 12px 0px 0px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      margin: 0 10px 0 0;
+      position: relative;
+      transform-origin: center;
+
+      &::before {
+        content: '';
+        display: block;
+        height: 250px;
+        width: 250px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        border-radius: 50%;
+        border-top: solid 10px #ccc;
+        opacity: 0.4;
+        background: rgba(255, 255, 255, 1);
+      }
+    }
   }
 }
 
@@ -101,6 +145,18 @@ export default Vue.extend({
 
     .Protfolio_Spoon_Img {
       width: 46vw;
+    }
+
+    .Index_Plate {
+      .Plate {
+        width: 700px;
+        height: 700px;
+
+        &::before {
+          height: 380px;
+          width: 380px;
+        }
+      }
     }
   }
 }
