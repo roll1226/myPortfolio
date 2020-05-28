@@ -54,7 +54,7 @@ export default Vue.extend({
 
     const works = await firestore
       .collection('works')
-      .orderBy('createdAt', 'asc')
+      .orderBy('createdAt', 'desc')
       .get()
     for (let index = 0; index < works.size; index++) {
       this.works.push(works.docs[index].data() as IWork)

@@ -101,10 +101,14 @@ export default Vue.extend({
   .Index_Plate {
     position: absolute;
     transform-origin: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     .Plate {
-      width: 450px;
-      height: 450px;
+      width: 100vw;
+      height: 100vw;
       border-bottom: solid 7px #ddd;
       background: white;
       border-radius: 50%;
@@ -118,8 +122,8 @@ export default Vue.extend({
       &::before {
         content: '';
         display: block;
-        height: 250px;
-        width: 250px;
+        height: 220px;
+        width: 220px;
         position: absolute;
         left: 50%;
         top: 50%;
