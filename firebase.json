@@ -17,6 +17,10 @@
       {
         "source": "**",
         "function": "ssr"
+      },
+      {
+        "source": "/contact",
+        "function": "email"
       }
     ]
   },

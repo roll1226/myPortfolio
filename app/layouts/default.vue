@@ -1,13 +1,25 @@
 <template>
   <div>
+    <PortfolioHead />
     <nuxt />
   </div>
 </template>
 
-<style>
+<script lang="ts">
+import Vue from 'vue'
+import PortfolioHead from '~/components/PortfolioHead.vue'
+
+export default Vue.extend({
+  components: {
+    PortfolioHead
+  }
+})
+</script>
+
+<style lang="scss">
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'MaruZawa', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -15,6 +27,12 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  background: #fdff99;
+}
+
+html,
+body {
+  overflow: hidden;
 }
 
 *,
@@ -24,32 +42,59 @@ html {
   margin: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+*:focus {
+  outline: none;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.Title_Wrap {
+  margin-top: 20vh;
+  text-align: center;
+  font-size: 3rem;
+  letter-spacing: 1.5rem;
+  padding-left: 2rem;
+  color: #985633;
+  text-shadow: 3px 3px 4px #b3b3b3;
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+.Sub_Title {
+  margin-top: 5vh;
+  text-align: center;
+  font-size: 3rem;
+  letter-spacing: 2rem;
+  padding-left: 2rem;
+  color: #985633;
+  text-shadow: 3px 3px 4px #b3b3b3;
 }
 
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.No_Scroll {
+  padding-top: 1vw;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 15vh;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media screen and(min-width: 770px) {
+  .Title_Wrap {
+    margin-top: 22vh;
+    font-size: 4rem;
+    letter-spacing: 2rem;
+  }
+
+  .Sub_Title {
+    margin-top: 10vh;
+    margin-top: 14vh;
+    font-size: 4rem;
+  }
+
+  .No_Scroll {
+    padding-bottom: 2vh;
+  }
 }
 </style>
