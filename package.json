@@ -10,7 +10,6 @@
     "generate": "nuxt-ts generate",
     "start": "nuxt-ts start",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-
     "clean:dist": "rm -rf dist && mkdir -p dist && cd dist && mkdir client",
     "copy:functions": "cp -R functions dist/server",
     "copy:nuxt": "cp -R .nuxt dist/server/",
